@@ -1,36 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
 
-
-   $("#btnSubmit").click(function() {
-       $("#sendmail").validate();
-
-       if ($("#sendmail").valid()) {
-           $.ajax({
-               type: "POST",
-               url: "/echo/json/",
-               cache: false,
-               contentType: "application/json; charset=utf-8",
-               data: "{ 'body': '" + $("#txtMessage").val() + "'," + "'from': '" + $("#inputEmail").val() + "'," + "'subject: 'email from" + $("#inputName").val() + "'," + $("#inputContact").val() + "'," + "}",
-               dataType: "json",
-               complete: function(transport) {
-                   alert(transport.status);
-                   if (transport.status == 200) {
-                       $("#formcontainer").html("<h1>Success</h1>");
-                   }
-                   else {
-                       alert("Please try again later");
-                   }
-               }
-           });
-       }
-
-
-       //so that the page doesn't post back
-       return false;
-   });
-
-
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
